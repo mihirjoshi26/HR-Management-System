@@ -180,7 +180,7 @@ For any questions or feedback, feel free to reach out:
 
 - **Joshi Mihir**  
 - **Email**: mihir26joshi@gmail.com  
-- **GitHub**: [your-username](https://github.com/mihirjoshi26)
+- **GitHub**: [mihirjoshi26](https://github.com/mihirjoshi26)
 
 ---
 
