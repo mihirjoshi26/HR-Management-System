@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: page_head}"></head>
+<body>
+	<nav th:replace="~{layout :: page_navbar}"></nav>
+	<div class="container py-4">
+		<h2 class="text-center">Attendance Overview</h2>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Total Employees</h5>
+						<p class="card-text" th:text="${totalEmployees}"></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Present</h5>
+						<p class="card-text" th:text="${presentEmployees}"></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Absent</h5>
+						<p class="card-text" th:text="${absentEmployees}"></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">On Leave</h5>
+						<p class="card-text" th:text="${onLeaveEmployees}"></p>
+					</div>
+				</div>
+			</div>
+			<div class="text-center mt-4">
+				<a href="/admin/dashboard" class="btn btn-secondary">Back</a>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="~{layout :: page_footer}"></footer>
+</body>
+</html>

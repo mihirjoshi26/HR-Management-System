@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: page_head}"></head>
+<body>
+
+	<nav th:replace="~{layout :: page_navbar}"></nav>
+
+	<div class="container py-4">
+		<h2 class="text-center">Manage Leave Applications</h2>
+
+		<table class="table table-striped mt-4">
+			<thead>
+				<tr>
+					<th>Employee Name</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Leave Type</th>
+					<th>Remarks</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="leave : ${leaveApplications}">
+					<td th:text="${leave.employeeName}"></td>
+					<!-- ✅ Now properly referenced -->
+					<td th:text="${leave.startDate}"></td>
+					<td th:text="${leave.endDate}"></td>
+					<td th:text="${leave.leaveType}"></td>
+					<td th:text="${leave.remarks}"></td>
+					<td><span th:text="${leave.status}"
+						th:class="${leave.status == 'Pending' ? 'badge bg-warning' : 
+                                        (leave.status == 'Approved' ? 'badge bg-success' : 'badge bg-danger')}">
+					</span></td>
+					<td>
+						<form method="post" th:action="@{/leave/admin/update-status}"
+							class="d-flex justify-content-center gap-2">
+							<input type="hidden" name="id" th:value="${leave.id}">
+							<button type="submit" name="status" value="Approved"
+								class="btn btn-success btn-sm">Approve</button>
+							<button type="submit" name="status" value="Rejected"
+								class="btn btn-danger btn-sm">Reject</button>
+						</form>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="text-center mt-3">
+			<a href="/admin/dashboard" class="btn btn-secondary">Back</a>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: page_head}"></head>
+<body>
+
+	<!-- Include Navbar with Dropdown Menu -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container">
+			<a class="navbar-brand" href="/admin/dashboard">Admin Dashboard</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="adminDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Admin Options </a>
+						<ul class="dropdown-menu" aria-labelledby="adminDropdown">
+							<li><a class="dropdown-item" href="/admin/add-employee">Add
+									Employee</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="/clients">View
+									Employee Data</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="/leave/admin/view">Manage
+									Leave Applications</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item"
+								href="/admin/attendance/overview">Attendance Overview</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item text-danger fw-bold"
+								href="/logout">Logout</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container p-4 text-center">
+		<h1 class="mb-4">Admin Dashboard</h1>
+
+		<!-- Success or Error Messages -->
+		<div th:if="${success}" class="alert alert-success text-center">
+			<p th:text="${success}"></p>
+		</div>
+		<div th:if="${error}" class="alert alert-danger text-center">
+			<p th:text="${error}"></p>
+		</div>
+	</div>
+
+	<footer th:replace="~{layout :: page_footer}"></footer>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

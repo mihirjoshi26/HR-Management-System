@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: page_head}"></head>
+<body>
+
+	<nav th:replace="~{layout :: page_navbar}"></nav>
+
+	<div class="container py-4">
+		<h2 class="text-center">Apply for Leave</h2>
+
+		<!-- Success/Error Messages -->
+		<div th:if="${success}" class="alert alert-success text-center">
+			<p th:text="${success}"></p>
+		</div>
+		<div th:if="${error}" class="alert alert-danger text-center">
+			<p th:text="${error}"></p>
+		</div>
+
+		<form method="post" th:action="@{/leave/apply}"
+			th:object="${leaveApplication}">
+			<div class="mb-3">
+				<label class="form-label">Employee Name</label> <input type="text"
+					class="form-control"
+					th:value="${employeeName != null ? employeeName : 'N/A'}" readonly>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">Start Date</label> <input type="date"
+					class="form-control" th:field="*{startDate}" required
+					onchange="calculateDays()">
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">End Date</label> <input type="date"
+					class="form-control" th:field="*{endDate}" required
+					onchange="calculateDays()">
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">Total Leave Days</label> <input
+					type="text" class="form-control" id="leaveDays" readonly>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">Leave Type</label> <select
+					class="form-control" th:field="*{leaveType}" required>
+					<option value="">Select Leave Type</option>
+					<option value="Bereavement Leave">Bereavement Leave</option>
+					<option value="Casual Leave">Casual Leave</option>
+					<option value="Compensatory Leave">Compensatory Leave</option>
+					<option value="Family and Medical Leave (FMLA)">Family and
+						Medical Leave (FMLA)</option>
+					<option value="Marriage Leave">Marriage Leave</option>
+					<option value="Maternity Leave">Maternity Leave</option>
+					<option value="Parental Leave">Parental Leave</option>
+					<option value="Paternity Leave">Paternity Leave</option>
+					<option value="Personal Leave">Personal Leave</option>
+					<option value="Sick Leave">Sick Leave</option>
+					<option value="Unpaid Leave">Unpaid Leave (or Leave
+						Without Pay)</option>
+					<option value="Vacation">Vacation</option>
+				</select>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">Remarks (Optional)</label>
+				<textarea class="form-control" th:field="*{remarks}" rows="3"></textarea>
+			</div>
+
+			<button type="submit" class="btn btn-primary w-100">Apply
+				for Leave</button>
+		</form>
+
+		<div class="text-center mt-3">
+			<a href="/profile" class="btn btn-secondary">Back</a>
+		</div>
+	</div>
+
+	<script>
+		function calculateDays() {
+			let start = new Date(document
+					.querySelector("input[name='startDate']").value);
+			let end = new Date(
+					document.querySelector("input[name='endDate']").value);
+			if (start && end && start <= end) {
+				let days = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
+				document.getElementById("leaveDays").value = days;
+			} else {
+				document.getElementById("leaveDays").value = "";
+			}
+		}
+	</script>
+
+</body>
+</html>
