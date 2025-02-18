@@ -6,8 +6,7 @@ Certainly! Below is a well-structured and detailed `README.md` file for your Emp
 
 # Employee Management System
 
-![Project Banner](![image](https://github.com/user-attachments/assets/7fe13c2e-d915-4b3a-b9ed-950f2369b8b3)
-) <!-- Add a banner image if available -->
+![Project Banner](![image](https://github.com/user-attachments/assets/b68e16ac-a847-4f98-83c0-47fffad7509d))<!-- Add a banner image if available -->
 
 The **Employee Management System** is a web-based application designed to streamline employee management tasks such as attendance tracking, leave management, salary management, and employee data administration. It provides features for both employees and administrators, ensuring efficient and organized workforce management.
 
